@@ -3,7 +3,9 @@
         <app-todo-form></app-todo-form>
     </div>
     <div class="col-md-6">
-        <app-todo-list [getTodos]="todosArr">
+        <app-todo-list [getTodos]="todosArr"
+        (emitRemoveId)="getRemoveId($event)"
+        >
         </app-todo-list>
     </div>
 </div>
