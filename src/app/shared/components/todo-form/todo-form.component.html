@@ -1,1 +1,34 @@
-<p>todo-form works!</p>
+<mat-card>
+<div class="card">
+     <h3>Todo Crud</h3>
+    <div class="card-body">
+        <h2 class="font-weight-bold">
+            {{ isInEditMode ? 'Update Todo' : 'Add Todo' }}
+        </h2>
+        <div class="form-group">
+            <label for="todoItem">todoItem</label>
+            <input type="text"
+            #todoItem
+            class="form-control">
+        </div>
+       <div class="form-group">
+        <label for="isCompleted">isCompleted</label>
+      <select class="form-control" #isCompleted>
+     <option [value]="true">Yes</option>
+      <option [value]="false">No</option>
+      </select>
+       </div>
+       <button  
+       (click)="onTodoAdd()"
+            *ngIf="!isInEditMode"
+
+       mat-raised-button color="primary" class="w-100">Add Todo</button>
+     <button 
+     *ngIf="isInEditMode"
+            
+            mat-raised-button   class="w-100" color="warn">
+            Update Todo
+            </button>
+         </div>
+      </div>
+</mat-card>

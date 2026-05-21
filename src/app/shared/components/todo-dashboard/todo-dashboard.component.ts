@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Itodos } from '../../models/todo';
+import { snackBarService } from '../../service/mat.service';
 
 @Component({
   selector: 'app-todo-dashboard',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-dashboard.component.scss']
 })
 export class TodoDashboardComponent implements OnInit {
+
 
   todosArr = [
     {
@@ -27,9 +30,17 @@ export class TodoDashboardComponent implements OnInit {
  
 
 
-  constructor() { }
+  constructor(private _snackBar : snackBarService) { }
 
   ngOnInit(): void {
   }
+  
+
+getNewTodo(todo : Itodos){
+this.todosArr.push(todo)
+
+ this._snackBar.openSnackBar(`The new Todo ${todo.todoItem} Added Successfully !!!!`)
+}
+
 
 }
