@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Itodos } from '../../models/todo';
 
 @Component({
   selector: 'app-todo-dashboard',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoDashboardComponent implements OnInit {
 
+  editObj!:Itodos
   todosArr = [
     {
       todoItem: 'Worked in Jio',
@@ -32,4 +34,12 @@ export class TodoDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onEdit(todo:Itodos){
+    this.editObj=todo
+  }
+
+  onUpdate(todo:Itodos){
+    let getindex=this.todosArr.findIndex(t=>t.todoId===todo.todoId);
+    this.todosArr[getindex]=todo;
+  }
 }
