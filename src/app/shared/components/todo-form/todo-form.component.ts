@@ -32,6 +32,13 @@ isInEditMode : boolean =false
 // }
 
   onTodoAdd(){
+
+  let todoValue = this.todoItem.nativeElement.value.trim()
+  // stop empty input
+  if(todoValue === ''){
+    return
+  }
+
     let New_Todo : Itodos ={
       todoItem : this.todoItem.nativeElement.value,
       isCompleted: this.isCompleted.nativeElement.value =='true'? true:false,
