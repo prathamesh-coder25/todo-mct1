@@ -9,8 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TodoDashboardComponent implements OnInit {
 
-  editObj!:Itodos
- 
+  editObj!: Itodos;
+
   todosArr: Itodos[] = [
     {
       todoItem: 'Worked in Jio',
@@ -36,15 +36,19 @@ export class TodoDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onEdit(todo:Itodos){
-    this.editObj=todo
+  onEdit(todo: Itodos) {
+    this.editObj = todo;
   }
 
-  onUpdate(todo:Itodos){
-    let getindex=this.todosArr.findIndex(t=>t.todoId===todo.todoId);
-    this.todosArr[getindex]=todo;
+  onUpdate(todo: Itodos) {
+
+    let getindex = this.todosArr.findIndex(
+      t => t.todoId === todo.todoId
+    );
+
+    this.todosArr[getindex] = todo;
   }
-}
+
   getRemoveId(id: string) {
 
     let getIndex = this.todosArr.findIndex(
@@ -56,7 +60,7 @@ export class TodoDashboardComponent implements OnInit {
       this.todosArr.splice(getIndex, 1);
 
       this._snackBar.open(
-        `This TodoItem is  Removed Successfully !!`,
+        `This TodoItem is Removed Successfully !!`,
         'close',
         {
           duration: 3000,
@@ -64,8 +68,6 @@ export class TodoDashboardComponent implements OnInit {
           verticalPosition: 'top'
         }
       );
-
     }
   }
-
 }
