@@ -8,6 +8,8 @@ import { Itodos } from '../../models/todo';
 })
 export class TodoListComponent implements OnInit {
 
+@Output() EmitEditObj:EventEmitter<Itodos>=new EventEmitter<Itodos>()
+
   @Input() getTodos!: Array<Itodos>
 
   @Output() emitRemoveId: EventEmitter<string> = new EventEmitter<string>()
@@ -15,6 +17,11 @@ export class TodoListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  onedit(todo:Itodos){
+    this.EmitEditObj.emit(todo);
   }
 
   onRemoveId(id: string) {
