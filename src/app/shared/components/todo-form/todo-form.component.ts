@@ -16,25 +16,20 @@ isInEditMode : boolean =false
 @ViewChild('todoItem') todoItem !: ElementRef
 @ViewChild('isCompleted') isCompleted !: ElementRef
 @Output()emitNewTodo :EventEmitter<Itodos>= new EventEmitter<Itodos>()
-@Input()getEditobj!:Itodos
-
-  constructor( private _uuidservice : uuidService) { }
+@Input() editObj!: Itodos;
 
 
+constructor( private _uuidservice : uuidService) { }@Input() EditObj!: Itodos;
 
+@Output() EmitUpdate:EventEmitter<Itodos>=new EventEmitter<Itodos>();
 
-  @Output() EmitUpdate:EventEmitter<Itodos>=new EventEmitter<Itodos>();
-
-
-  
-
-  ngOnInit(): void {
+ngOnInit(): void {
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
    if(changes['editObj'].currentValue){
-    this.isinEditMode=true;
+    this.isInEditMode=true;
     this.todoItem.nativeElement.value=this.editObj.todoItem;
     this.isCompleted.nativeElement.value=this.editObj.isCompleted
    }
@@ -47,7 +42,7 @@ isInEditMode : boolean =false
       isCompleted:this.isCompleted.nativeElement.value==='true'?true:false,
       todoId:this.editObj.todoId
     }
-    this.isinEditMode=false
+    this.isInEditMode=false
     this.todoItem.nativeElement.value='';
     this.isCompleted.nativeElement.value=true
   this.EmitUpdate.emit(updated_obj)

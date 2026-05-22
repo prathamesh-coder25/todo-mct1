@@ -54,7 +54,7 @@ this.todosArr.push(todo)
     let getindex=this.todosArr.findIndex(t=>t.todoId===todo.todoId);
     this.todosArr[getindex]=todo;
   }
-}
+
   getRemoveId(id: string) {
 
     let getIndex = this.todosArr.findIndex(
