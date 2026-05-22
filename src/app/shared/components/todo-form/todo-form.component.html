@@ -25,7 +25,7 @@
        mat-raised-button color="primary" class="w-100">Add Todo</button>
      <button 
      *ngIf="isInEditMode"
-            
+             (click)="onUpdateTodo()"
             mat-raised-button   class="w-100" color="warn">
             Update Todo
             </button>

@@ -1,6 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+
 import { Itodos } from '../../models/todo';
 import { uuidService } from '../../service/uuid.service';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-todo-form',
@@ -8,17 +10,47 @@ import { uuidService } from '../../service/uuid.service';
   styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent implements OnInit {
+  
+  
 isInEditMode : boolean =false
 @ViewChild('todoItem') todoItem !: ElementRef
 @ViewChild('isCompleted') isCompleted !: ElementRef
 @Output()emitNewTodo :EventEmitter<Itodos>= new EventEmitter<Itodos>()
-
-
 @Input()getEditobj!:Itodos
 
   constructor( private _uuidservice : uuidService) { }
 
+
+
+
+  @Output() EmitUpdate:EventEmitter<Itodos>=new EventEmitter<Itodos>();
+
+
+  
+
   ngOnInit(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+   if(changes['editObj'].currentValue){
+    this.isinEditMode=true;
+    this.todoItem.nativeElement.value=this.editObj.todoItem;
+    this.isCompleted.nativeElement.value=this.editObj.isCompleted
+   }
+  }
+
+  onUpdateTodo(){
+
+    let updated_obj:Itodos={
+      todoItem:this.todoItem.nativeElement.value,
+      isCompleted:this.isCompleted.nativeElement.value==='true'?true:false,
+      todoId:this.editObj.todoId
+    }
+    this.isinEditMode=false
+    this.todoItem.nativeElement.value='';
+    this.isCompleted.nativeElement.value=true
+  this.EmitUpdate.emit(updated_obj)
   }
   
 // ngOnChanges(changes:SimpleChanges):void{
