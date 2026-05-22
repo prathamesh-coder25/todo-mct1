@@ -9,7 +9,9 @@
             mat-mini-fab color="primary" class="mr-2">
                 <mat-icon>edit</mat-icon>
             </button>   
-            <button mat-mini-fab color="warn">
+            <button 
+            (click)="onRemoveId(todo.todoId)"
+            mat-mini-fab color="warn">
                 <mat-icon>delete</mat-icon>
             </button>
         </div>
