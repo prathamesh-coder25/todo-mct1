@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Itodos } from '../../models/todo';
 
 @Component({
@@ -7,11 +7,21 @@ import { Itodos } from '../../models/todo';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  @Input() getTodos !: Array<Itodos>
+
+  @Input() getTodos!: Array<Itodos>
+
+  @Output() emitRemoveId: EventEmitter<string> = new EventEmitter<string>()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onRemoveId(id: string) {
+
+    this.emitRemoveId.emit(id)
+
+    console.log(id);
+
+  }
 }
