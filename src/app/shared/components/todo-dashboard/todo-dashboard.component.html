@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-md-6">
         <app-todo-form
+    (emitNewTodo)="getNewTodo($event)"
+
         (EmitUpdate)="onUpdate($event)"
         [editObj]="editObj"
         ></app-todo-form>
