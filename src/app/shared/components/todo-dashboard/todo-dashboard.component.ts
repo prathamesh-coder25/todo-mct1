@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Itodos } from '../../models/todo';
-import { snackBarService } from '../../service/mat.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-todo-dashboard',
@@ -9,8 +8,6 @@ import { snackBarService } from '../../service/mat.service';
   styleUrls: ['./todo-dashboard.component.scss']
 })
 export class TodoDashboardComponent implements OnInit {
-
-
 
   editObj!:Itodos
  
@@ -32,19 +29,12 @@ export class TodoDashboardComponent implements OnInit {
     }
   ];
 
-  constructor(private _snackBar : snackBarService) { }
-
+  constructor(
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
   }
-  
-
-getNewTodo(todo : Itodos){
-this.todosArr.push(todo)
-
- this._snackBar.openSnackBar(`The new Todo ${todo.todoItem} Added Successfully !!!!`)
-}
-
 
   onEdit(todo:Itodos){
     this.editObj=todo
