@@ -7,18 +7,24 @@ import { TodoDashboardComponent } from './shared/components/todo-dashboard/todo-
 import { TodoListComponent } from './shared/components/todo-list/todo-list.component';
 import { TodoFormComponent } from './shared/components/todo-form/todo-form.component';
 import { MaterialModule } from './shared/material/material.module';
+import {MatButtonModule}  from "@angular/material/button"
+import {MatDialogModule}  from "@angular/material/dialog"
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoDashboardComponent,
     TodoListComponent,
-    TodoFormComponent
+    TodoFormComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatSnackBarModule
 ],
   providers: [],
   bootstrap: [AppComponent]
