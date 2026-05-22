@@ -68,7 +68,7 @@ this.todosArr.push(todo)
       this._snackBar.open(
         `This TodoItem is  Removed Successfully !!`,
         'close',
-        {
+      {
           duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'top'
